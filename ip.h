@@ -8,18 +8,18 @@ using namespace std;
 class IP {
 
 public:
-
     const uint8_t *getSegments() const;
-
     explicit IP(std::string s);
-
     bool operator>(const IP &other) const;
-
     std::string toString() const;
 
 private:
     uint8_t segments[4];
 };
+
+
+void sortIPs(vector< const IP*>*);
+
 
 typedef function<bool(const IP &)> ipMatcher;
 

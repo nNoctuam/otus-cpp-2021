@@ -35,6 +35,12 @@ string IP::toString() const {
     return boost::join(segmentStrings, ".");
 }
 
+
+void sortIPs(vector<const IP *> *ips) {
+    sort(ips->rbegin(), ips->rend(), [](const IP *a, const IP *b) { return *a > *b; });
+}
+
+
 void printFiltered(const vector<const IP *> &IPs, basic_ostream<char> &, const ipMatcher &doesIPMatch) {
     for (auto ip : IPs) {
         auto match = doesIPMatch(*ip);

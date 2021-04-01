@@ -8,14 +8,14 @@ using namespace std;
 int main() {
     vector<const IP *> ips;
     string row;
-    vector<string> lineSegments;
+    vector<string> rowSegments;
 
     while (getline(cin, row)) {
-        boost::split(lineSegments, row, boost::is_any_of("\t"));
-        ips.push_back(new IP(lineSegments[0]));
+        boost::split(rowSegments, row, boost::is_any_of("\t"));
+        ips.push_back(new IP(rowSegments[0]));
     }
 
-    sort(ips.rbegin(), ips.rend(), [](const IP *a, const IP *b) { return *a > *b; });
+    sortIPs(&ips);
 
     printFiltered(ips, cout, any);
     printFiltered(ips, cout, firstIsOne);
