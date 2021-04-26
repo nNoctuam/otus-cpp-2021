@@ -5,7 +5,7 @@
 
 using namespace std;
 
-std::array<uint8_t, IP::SEGMENTS_COUNT> IP::getSegments() const {
+const std::array<uint8_t, IP::SEGMENTS_COUNT> IP::getSegments() const {
     return segments;
 }
 

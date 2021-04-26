@@ -11,7 +11,7 @@ class IP {
 public:
     const static int SEGMENTS_COUNT = 4;
 
-    std::array<uint8_t, SEGMENTS_COUNT> getSegments() const;
+    const std::array<uint8_t, SEGMENTS_COUNT> getSegments() const;
 
     explicit IP(const std::string &s);
 
