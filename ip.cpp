@@ -5,31 +5,27 @@
 
 using namespace std;
 
-const uint8_t *IP::getSegments() const {
+std::array<uint8_t, IP::SEGMENTS_COUNT> IP::getSegments() const {
     return segments;
 }
 
-IP::IP(string s) : segments() {
+IP::IP(const string &s) : segments() {
     std::vector<string> strs;
+    strs.reserve(IP::SEGMENTS_COUNT);
     boost::split(strs, s, boost::is_any_of("."));
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 0; i < IP::SEGMENTS_COUNT; i++) {
         this->segments[i] = stoi(strs[i]);
     }
 }
 
 bool IP::operator>(const IP &other) const {
-    for (int i = 0; i <= 3; i++) {
-        if (this->segments[i] == other.segments[i]) {
-            continue;
-        }
-        return this->segments[i] < other.segments[i];
-    }
-    return false;
+    return this->segments > other.segments;
 }
 
 string IP::toString() const {
     vector<string> segmentStrings;
-    for (int i = 0; i <= 3; i++) {
+    segmentStrings.reserve(IP::SEGMENTS_COUNT);
+    for (int i = 0; i < IP::SEGMENTS_COUNT; i++) {
         segmentStrings.push_back(to_string(this->segments[i]));
     }
     return boost::join(segmentStrings, ".");
@@ -37,15 +33,14 @@ string IP::toString() const {
 
 
 void sortIPs(vector<const IP *> *ips) {
-    sort(ips->rbegin(), ips->rend(), [](const IP *a, const IP *b) { return *a > *b; });
+    sort(ips->begin(), ips->end(), [](const IP *a, const IP *b) { return *a > *b; });
 }
 
 
-void printFiltered(const vector<const IP *> &IPs, basic_ostream<char> &, const ipMatcher &doesIPMatch) {
-    for (auto ip : IPs) {
-        auto match = doesIPMatch(*ip);
-        if (match) {
-            cout << ip->toString() << endl;
+void printFiltered(const vector<const IP *> &IPs, basic_ostream<char> &output, const ipMatcher &doesIPMatch) {
+    for (const auto &ip : IPs) {
+        if (doesIPMatch(*ip)) {
+            output << ip->toString() << endl;
         }
     }
 }
@@ -65,7 +60,7 @@ bool first46Second70(const IP &ip) {
 
 bool any46(const IP &ip) {
     auto segments = ip.getSegments();
-    for (size_t i = 0; i <= 3; i++) {
+    for (size_t i = 0; i < IP::SEGMENTS_COUNT; i++) {
         if (segments[i] == 46) {
             return true;
         }
