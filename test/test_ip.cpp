@@ -20,11 +20,11 @@ BOOST_AUTO_TEST_SUITE(test_ip)
 
 
     BOOST_AUTO_TEST_CASE(test_ip_sortIPs) {
-        vector<const IP *> ips;
-        ips.push_back(new IP("32.0.5.1\t25324\t0"));
-        ips.push_back(new IP("127.0.0.1\t25324\t0"));
-        ips.push_back(new IP("32.0.0.1\t25324\t0"));
-        sortIPs(&ips);
+        std::vector<std::unique_ptr<const IP>> ips;
+        ips.push_back(std::make_unique<IP>("32.0.5.1\t25324\t0"));
+        ips.push_back(std::make_unique<IP>("127.0.0.1\t25324\t0"));
+        ips.push_back(std::make_unique<IP>("32.0.0.1\t25324\t0"));
+        sortIPs(ips);
         BOOST_REQUIRE(ips.at(0)->toString() == "127.0.0.1");
         BOOST_REQUIRE(ips.at(1)->toString() == "32.0.5.1");
         BOOST_REQUIRE(ips.at(2)->toString() == "32.0.0.1");
