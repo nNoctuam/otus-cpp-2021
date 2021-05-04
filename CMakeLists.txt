@@ -3,12 +3,12 @@ cmake_minimum_required(VERSION 3.2)
 project(helloworld VERSION 0.0.$ENV{GITHUB_RUN_NUMBER})
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-configure_file(version.h.in version.h)
+configure_file(include/version.h.in version.h)
 
-add_executable(helloworld_cli main.cpp ip.cpp)
-add_library(helloworld lib.cpp)
-add_executable(test_version test_version.cpp)
-add_executable(test_ip test_ip.cpp ip.cpp)
+add_executable(helloworld_cli cmd/ip_filter_cli.cpp src/ip.cpp)
+add_library(helloworld src/lib.cpp)
+add_executable(test_version test/test_version.cpp)
+add_executable(test_ip test/test_ip.cpp src/ip.cpp)
 
 set_target_properties(helloworld_cli helloworld test_version test_ip PROPERTIES
     CXX_STANDARD 14

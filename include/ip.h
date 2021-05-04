@@ -4,14 +4,13 @@
 #include <iostream>
 #include <boost/algorithm/string.hpp>
 
-using namespace std;
 
 class IP {
 
 public:
     const static int SEGMENTS_COUNT = 4;
 
-    const std::array<uint8_t, SEGMENTS_COUNT> getSegments() const;
+    const std::array<uint8_t, SEGMENTS_COUNT> &getSegments() const;
 
     explicit IP(const std::string &s);
 
@@ -24,12 +23,16 @@ private:
 };
 
 
-void sortIPs(vector<const IP *> *);
+void sortIPs(std::vector<std::unique_ptr<const IP>> &);
 
 
-typedef function<bool(const IP &)> ipMatcher;
+typedef std::function<bool(const IP &)> ipMatcher;
 
-void printFiltered(const vector<const IP *> &IPs, basic_ostream<char> &, const ipMatcher &doesIPMatch);
+void printFiltered(
+        const std::vector<std::unique_ptr<const IP>> &IPs,
+        std::basic_ostream<char> &,
+        const ipMatcher &doesIPMatch
+);
 
 bool any(const IP &);
 
