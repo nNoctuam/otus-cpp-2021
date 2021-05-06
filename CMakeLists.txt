@@ -6,7 +6,7 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
-add_library(helloworld lib.cpp)
+add_library(helloworld src/lib.cpp)
 add_executable(test_version test_version.cpp)
 
 set_target_properties(helloworld_cli helloworld test_version PROPERTIES
@@ -67,7 +67,3 @@ include(CPack)
 enable_testing()
 
 add_test(test_version test_version)
-
-
-project(tmp VERSION 0.0.1)
-add_executable(tmp logging_allocator.cpp)
