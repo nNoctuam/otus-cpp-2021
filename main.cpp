@@ -46,12 +46,10 @@ public:
     }
 };
 
-const int  INITIAL_SIZE=10;
 template<typename T, int INITIAL_SIZE = 10>
 class LinearAllocator {
 public:
     using value_type = T;
-//    using type = T;
 
     using pointer = T *;
     using const_pointer = const T *;
@@ -63,8 +61,9 @@ public:
     bool _blocksAvailability[INITIAL_SIZE] = {};
 
     LinearAllocator() {
-        std::cout << "sizeof(T)=" << sizeof(T) << std::endl;
-        _heap = static_cast<T *>(calloc(INITIAL_SIZE, sizeof(T)));
+        std::cout << "size=" << INITIAL_SIZE << " sizeof(T)=" << sizeof(T) << " heapSize=" << INITIAL_SIZE * sizeof(T);
+        _heap = static_cast<T *>(malloc(INITIAL_SIZE * sizeof(T)));
+        std::cout << " _heap=" << _heap << std::endl;
         for (size_t i = 0; i < INITIAL_SIZE; i++) {
             _blocksAvailability[i] = true;
         }
@@ -92,9 +91,9 @@ public:
             for (size_t s = 0; s < n; s++) {
                 _blocksAvailability[s + i] = false;
             }
-            std::cout << "[LinearAllocator] allocate " << _heap + i * sizeof(T) << std::endl;
+            std::cout << "[LinearAllocator] allocate n=" << n << ": " << _heap + i << std::endl;
             printMap();
-            return _heap + i * sizeof(T);
+            return reinterpret_cast<T *>(_heap + i);
         }
 
         printMap();
@@ -106,16 +105,14 @@ public:
     void deallocate(T *p, std::size_t s) {
         std::cout << "[LinearAllocator] deallocate " << p << std::endl;
         for (size_t i = 0; i < s; i++) {
-            _blocksAvailability[(p - _heap) / sizeof(T) + i] = true;
+            _blocksAvailability[(p - _heap) + i] = true;
         }
         printMap();
     }
 
     template<typename U, typename ...Args>
-    void construct(U *p, Args &&...args) {
-        std::cout << "[LinearAllocator] construct " << p << " with ";
-        (std::cout << ... << args);
-        std::cout << std::endl;
+    void construct(U *p, Args &&... args) {
+        std::cout << "[LinearAllocator] construct " << p << std::endl;
         new(p) U(std::forward<Args>(args)...);
     }
 
@@ -124,11 +121,17 @@ public:
     }
 
     void printMap() {
+        std::cout << "[LinearAllocator] ";
         for (bool b : _blocksAvailability) {
             std::cout << (b ? 'x' : '_') << " ";
         }
         std::cout << std::endl;
     }
+
+    template<typename U>
+    struct rebind {
+        using other = LinearAllocator<U>;
+    };
 
     ~LinearAllocator() = default;
 };
@@ -155,7 +158,7 @@ public:
             _elements = tmp;
             _capacity *= 2;
         }
-        auto *memBlock = _allocator->allocate(1);
+        auto *memBlock = _allocator.allocate(1);
         _elements[_size] = new(memBlock) T(value);
         _size++;
     }
@@ -168,7 +171,7 @@ public:
         _size--;
     }
 
-    T &get(int index) {
+    const T &get(int index) {
         return *_elements[index];
     }
 
@@ -193,13 +196,28 @@ public:
 
 
 private:
-    Allocator *_allocator;
+    Allocator _allocator;
     int _size = 0;
     int _capacity = 10;
     T **_elements;
 };
 
 int main(int, char **) {
+//    LinearAllocator<int16_t, 10> la;
+//    int16_t ** ms = new int16_t *[10];
+//    ms[0] = la.allocate(1);
+//    ms[1] = la.allocate(1);
+////    la.construct(ms[0], 9);
+//    new(ms[0]) int16_t ( int16_t(INT16_MAX-1));
+//    new(ms[1]) int16_t(8);
+//    std::cout << *ms[0] << std::endl;
+//    std::cout << *ms[1] << std::endl;
+//    std::cout << std::endl;
+
+
+
+
+    std::cout << "\nSIMPLE MAP =================================================" << std::endl;
     // region simple map
     std::map<int, int> m;
     m[0] = 0;
@@ -208,25 +226,54 @@ int main(int, char **) {
         m[i] = m[i - 1] * i;
     }
     for (const auto &item : m) {
-        std::cout << item.first << "=" << item.second << " ";
+        std::cout << item.first << " " << item.second << " " << std::endl;
     }
     std::cout << std::endl;
     // endregion
 
+    std::cout << "\nMAP WITH LA =================================================" << std::endl;
+
     // region map with custom allocator
-    std::map<int, int, std::less<>,
-        LinearAllocator<  std::pair<const int, int>, 10  >
-    > myMap;
-//    m2[0] = 0;
-//    m2[1] = 1;
-//    for (int i = 2; i < 10; i++) {
-//        m2[i] = m2[i - 1] * i;
-//    }
-//    for (const auto &item : m2) {
-//        std::cout << item.first << "=" << item.second << " ";
-//    }
-//    std::cout << std::endl;
+    auto myMap = std::map<int, int, std::less<>,
+            LinearAllocator<std::pair<const int, int>, 10>
+    >{};
+    myMap[0] = 0;
+    myMap[1] = 1;
+    for (int i = 2; i < 10; i++) {
+        myMap[i] = myMap[i - 1] * i;
+    }
+    for (const auto &item : myMap) {
+        std::cout << item.first << " " << item.second << " " << std::endl;
+    }
+    std::cout << std::endl;
     // endregion
+
+    std::cout << "\nDUMMY ARRAY =================================================" << std::endl;
+
+    // region DummyArray
+    auto list = new DummyArray<int, std::allocator<int>>();
+    for (int i = 0; i < 10; i++) {
+        list->append(i);
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << list->get(i) << std::endl;
+    }
+    // endregion
+
+    std::cout << "\nDUMMY ARRAY WITH LA =================================================" << std::endl;
+
+    // region DummyArray with LinearAllocator
+    auto list2 = new DummyArray<int, LinearAllocator<int>>();
+    for (int i = 0; i < 10; i++) {
+        list2->append(i);
+    }
+    for (int i = 0; i < 10; i++) {
+        int v = list2->get(i);
+        std::cout << v << std::endl;
+    }
+    // endregion
+
+    return 0;
 
 //    region old
 //    std::cout << std::endl << "----- DummyAllocator<int> -----" << std::endl;

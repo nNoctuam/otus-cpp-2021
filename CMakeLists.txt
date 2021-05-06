@@ -67,3 +67,7 @@ include(CPack)
 enable_testing()
 
 add_test(test_version test_version)
+
+
+project(tmp VERSION 0.0.1)
+add_executable(tmp logging_allocator.cpp)
