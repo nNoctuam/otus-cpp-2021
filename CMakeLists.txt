@@ -29,3 +29,51 @@ project(1787_turn_to_mega)
 set(CMAKE_CXX_STANDARD 14)
 add_executable(1787_turn_to_mega 1787_turn_to_mega/main.cpp)
 
+
+project(1001_reverse_square_root)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1001_reverse_square_root 1001_reverse_square_root/main.cpp)
+
+
+project(1000_a_plus_b)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1000_a_plus_b 1000_a_plus_b/main.cpp)
+
+
+project(1293_enya)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1293_enya 1293_enya/main.cpp)
+
+
+project(1785_localization_difficulties)
+set(CMAKE_CXX_STANDARD 14)
+add_executable( 1785_localization_difficulties 1785_localization_difficulties/main.cpp)
+
+
+project(2012_grisha)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(2012_grisha 2012_grisha/main.cpp)
+
+
+project(1820_uralian_beafstakes)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1820_uralian_bafstakes 1820_uralian_beafstakes/main.cpp)
+
+
+project(2066_simple_expression)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(2066_simple_expression 2066_simple_expression/main.cpp)
+
+project(1197_single_warrior)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1197_single_warrior 1197_single_warrior/main.cpp)
+
+
+project(2100_wedding_feast)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(2100_wedding_feast 2100_wedding_feast/main.cpp)
+
+
+project(1880_own_numbers)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1880_own_numbers 1880_own_numbers/main.cpp)
