@@ -1,23 +1,21 @@
-template <int SIZE, int RPOS, typename TupleT>
-typename std::enable_if<RPOS == 0, TupleT>::type
-print_tuple_elements(const TupleT &ip) {
+template <int SIZE, int RPOS, typename T>
+typename std::enable_if<RPOS == 0, T>::type print_tuple_elements(const T &ip) {
   return ip;
 }
 
-template <int SIZE, int RPOS, typename TupleT>
-typename std::enable_if<is_tuple<TupleT>::value && RPOS != 0, TupleT>::type
-print_tuple_elements(const TupleT &ip) {
+template <int SIZE, int RPOS, typename T>
+typename std::enable_if<is_tuple<T>::value && RPOS != 0, T>::type
+print_tuple_elements(const T &ip) {
   std::cout << '.' << std::get<SIZE - RPOS>(ip);
-  print_tuple_elements<SIZE, RPOS - 1, TupleT>(ip);
+  print_tuple_elements<SIZE, RPOS - 1, T>(ip);
   return ip;
 }
 
-template <typename TupleT>
-typename std::enable_if<is_tuple<TupleT>::value, TupleT>::type
-print_ip(TupleT ip) {
+template <typename T>
+typename std::enable_if<is_tuple<T>::value, T>::type print_ip(T ip) {
   std::cout << std::get<0>(ip);
-  constexpr int size = std::tuple_size<TupleT>();
-  print_tuple_elements<size, size - 1, TupleT>(ip);
+  constexpr int size = std::tuple_size<T>();
+  print_tuple_elements<size, size - 1, T>(ip);
   std::cout << std::endl;
   return ip;
 }

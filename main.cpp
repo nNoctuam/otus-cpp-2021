@@ -1,11 +1,8 @@
-#include "lib.h"
-
+#include "include/print_ip.h"
 #include <iostream>
 #include <list>
 #include <tuple>
 #include <vector>
-#include "include/print_ip.h"
-
 
 int main(int, char **) {
   print_ip(char{-1});                             // 255
