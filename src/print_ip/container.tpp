@@ -1,7 +1,8 @@
 /** @file */
 
 /**
- * \brief print_ip for stl container (vector, list, etc): print element by element as is
+ * \brief print_ip for stl container (vector, list, etc): print
+ *        element by element as is
  * \param[in] ip stl container
  */
 template <typename T>
