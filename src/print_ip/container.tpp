@@ -1,3 +1,9 @@
+/** @file */
+
+/**
+ * \brief print_ip for stl container (vector, list, etc): print element by element as is
+ * \param[in] ip stl container
+ */
 template <typename T>
 typename std::enable_if<is_std_container<T>::value && !is_string<T>::value,
                         T>::type

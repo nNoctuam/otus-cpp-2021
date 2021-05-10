@@ -2,3 +2,5 @@
 cmake-build-debug
 CMakeFiles
 Testing
+doxygen_html
+doxygen_latex

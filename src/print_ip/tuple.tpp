@@ -1,3 +1,9 @@
+/** @file */
+
+/**
+ * \brief print_ip for tuple of elements of the same type: print one by one as is
+ * \param[in] ip tuple
+ */
 template <int SIZE, int RPOS, typename T>
 typename std::enable_if<RPOS == 0, T>::type print_tuple_elements(const T &ip) {
   return ip;
