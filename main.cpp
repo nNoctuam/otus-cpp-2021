@@ -1,8 +1,5 @@
-#include "include/lib.h"
-
 #include <iostream>
 #include <map>
-#include <stdexcept>
 #include <vector>
 
 #include "include/dummy_array.h"
