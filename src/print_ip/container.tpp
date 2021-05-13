@@ -6,9 +6,12 @@
  * \param[in] ip stl container
  */
 template <typename T>
-typename std::enable_if<is_std_container<T>::value && !is_string<T>::value,
-                        T>::type
-print_ip(T ip) {
+auto print_ip(T ip) -> decltype(
+    std::declval<
+        typename std::enable_if<is_std_container<T>::value && !is_string<T>::value, T>::type
+      >(),
+    void()
+) {
   if (ip.begin() != ip.end()) {
     std::cout << std::to_string(*ip.begin());
   }
@@ -19,5 +22,4 @@ print_ip(T ip) {
     std::cout << '.' << std::to_string(*begin);
   }
   std::cout << std::endl;
-  return ip;
 }

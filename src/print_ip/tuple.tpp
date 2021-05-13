@@ -22,10 +22,14 @@ print_tuple_elements(const T &ip) {
 }
 
 template <typename T>
-typename std::enable_if<is_tuple<T>::value, T>::type print_ip(T ip) {
+auto print_ip(T ip) -> decltype(
+  std::declval<
+      typename std::enable_if<is_tuple<T>::value, T>::type
+    >(),
+  void()
+) {
   std::cout << std::get<0>(ip);
   constexpr int size = std::tuple_size<T>();
   print_tuple_elements<size, size - 1, T>(ip);
   std::cout << std::endl;
-  return ip;
 }
