@@ -74,14 +74,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6e736f9eb00c5a6b43e61aef6d9d0590"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a6e736f9eb00c5a6b43e61aef6d9d0590"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="structis__std__container.html">is_std_container</a>&lt; T &gt;::value &amp;&amp;!<a class="el" href="structis__string.html">is_string</a>&lt; T &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="container_8tpp.html#a6e736f9eb00c5a6b43e61aef6d9d0590">print_ip</a> (T ip)</td></tr>
-<tr class="memdesc:a6e736f9eb00c5a6b43e61aef6d9d0590"><td class="mdescLeft">&#160;</td><td class="mdescRight">print_ip for stl container (vector, list, etc): print element by element as is  <a href="container_8tpp.html#a6e736f9eb00c5a6b43e61aef6d9d0590">More...</a><br /></td></tr>
-<tr class="separator:a6e736f9eb00c5a6b43e61aef6d9d0590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556a662059f38bb9df5706b5b5faef63"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a556a662059f38bb9df5706b5b5faef63"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="container_8tpp.html#a556a662059f38bb9df5706b5b5faef63">print_ip</a> (T ip) -&gt; decltype(std::declval&lt; typename std::enable_if&lt; <a class="el" href="structis__std__container.html">is_std_container</a>&lt; T &gt;::value &amp;&amp;!<a class="el" href="structis__string.html">is_string</a>&lt; T &gt;::value, T &gt;::type &gt;(), void())</td></tr>
+<tr class="memdesc:a556a662059f38bb9df5706b5b5faef63"><td class="mdescLeft">&#160;</td><td class="mdescRight">print_ip for stl container (vector, list, etc): print element by element as is  <a href="container_8tpp.html#a556a662059f38bb9df5706b5b5faef63">More...</a><br /></td></tr>
+<tr class="separator:a556a662059f38bb9df5706b5b5faef63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6e736f9eb00c5a6b43e61aef6d9d0590"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e736f9eb00c5a6b43e61aef6d9d0590">&#9670;&nbsp;</a></span>print_ip()</h2>
+<a id="a556a662059f38bb9df5706b5b5faef63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556a662059f38bb9df5706b5b5faef63">&#9670;&nbsp;</a></span>print_ip()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -89,11 +89,16 @@ Functions</h2></td></tr>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt;<a class="el" href="structis__std__container.html">is_std_container</a>&lt;T&gt;::value &amp;&amp; !<a class="el" href="structis__string.html">is_string</a>&lt;T&gt;::value, T&gt;::type print_ip </td>
+          <td class="memname">auto print_ip </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>ip</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; decltype(
+    std::declval&lt;
+        typename std::enable_if&lt;<a class="el" href="structis__std__container.html">is_std_container</a>&lt;T&gt;::value &amp;&amp; !<a class="el" href="structis__string.html">is_string</a>&lt;T&gt;::value, T&gt;::type
+      &gt;(),
+    void()
+) </td>
         </tr>
       </table>
 </div><div class="memdoc">

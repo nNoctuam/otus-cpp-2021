@@ -81,13 +81,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a6849b3b588089e78a4744b4dc4af6173"><td class="memTemplParams" colspan="2">template&lt;int SIZE, int RPOS, typename T &gt; </td></tr>
 <tr class="memitem:a6849b3b588089e78a4744b4dc4af6173"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="structis__tuple.html">is_tuple</a>&lt; T &gt;::value &amp;&amp;RPOS !=0, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="tuple_8tpp.html#a6849b3b588089e78a4744b4dc4af6173">print_tuple_elements</a> (const T &amp;ip)</td></tr>
 <tr class="separator:a6849b3b588089e78a4744b4dc4af6173"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac68210a56c71d8c7c2c452fdb2310542"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac68210a56c71d8c7c2c452fdb2310542"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; <a class="el" href="structis__tuple.html">is_tuple</a>&lt; T &gt;::value, T &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="tuple_8tpp.html#ac68210a56c71d8c7c2c452fdb2310542">print_ip</a> (T ip)</td></tr>
-<tr class="separator:ac68210a56c71d8c7c2c452fdb2310542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32c381fe6e5226ee25f660f342433d40"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a32c381fe6e5226ee25f660f342433d40"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="tuple_8tpp.html#a32c381fe6e5226ee25f660f342433d40">print_ip</a> (T ip) -&gt; decltype(std::declval&lt; typename std::enable_if&lt; <a class="el" href="structis__tuple.html">is_tuple</a>&lt; T &gt;::value, T &gt;::type &gt;(), void())</td></tr>
+<tr class="separator:a32c381fe6e5226ee25f660f342433d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac68210a56c71d8c7c2c452fdb2310542"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac68210a56c71d8c7c2c452fdb2310542">&#9670;&nbsp;</a></span>print_ip()</h2>
+<a id="a32c381fe6e5226ee25f660f342433d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32c381fe6e5226ee25f660f342433d40">&#9670;&nbsp;</a></span>print_ip()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -95,11 +95,16 @@ Functions</h2></td></tr>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::enable_if&lt;<a class="el" href="structis__tuple.html">is_tuple</a>&lt;T&gt;::value, T&gt;::type print_ip </td>
+          <td class="memname">auto print_ip </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>ip</em></td><td>)</td>
-          <td></td>
+          <td> -&gt; decltype(
+  std::declval&lt;
+      typename std::enable_if&lt;<a class="el" href="structis__tuple.html">is_tuple</a>&lt;T&gt;::value, T&gt;::type
+    &gt;(),
+  void()
+) </td>
         </tr>
       </table>
 </div><div class="memdoc">
