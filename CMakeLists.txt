@@ -77,3 +77,14 @@ add_executable(2100_wedding_feast 2100_wedding_feast/main.cpp)
 project(1880_own_numbers)
 set(CMAKE_CXX_STANDARD 14)
 add_executable(1880_own_numbers 1880_own_numbers/main.cpp)
+
+
+project(1964_chinese_language)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1964_chinese_language 1964_chinese_language/main.cpp)
+
+
+project(1931_great_team)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1931_great_team 1931_great_team/main.cpp)
+
