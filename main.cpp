@@ -1,11 +1,25 @@
-#include "lib.h"
+#include "include/app.h"
+#include "include/controller.h"
+#include "include/core/document.h"
+#include "include/core/graphics.h"
+#include "include/core/gui.h"
+#include "include/service/service.h"
+#include <memory>
 
-#include <iostream>
+void buildMenu(Application& app) {
+  auto menu = std::make_shared<Menu>();
 
-int main (int, char **)
-{
-    std::cout << "build " << version() << std::endl;
-    std::cout << "Hello, World!" << std::endl;
+  std::shared_ptr<MenuEntry> saveMenuEntry = std::make_shared<SaveMenuEntry>(app);
+  menu->AddEntry(saveMenuEntry);
 
-    return 0;
+  app.AddElement(menu);
+}
+
+int main(int, char **) {
+  auto canvas = new Canvas();
+  auto document = new Document(*canvas);
+  auto app = new Application(*document);
+  buildMenu(*app);
+
+  return 0;
 }
