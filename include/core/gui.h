@@ -1,6 +1,8 @@
 #pragma once
 
-#include "gui/basics.h"
-#include "gui/containers.h"
-#include "gui/inputs.h"
-#include "gui/menu.h"
+#include "gui/IClickable.h"
+#include "gui/IController.h"
+#include "gui/IGUIElement.h"
+#include "gui/IView.h"
+#include "gui/models/IContainer.h"
+#include "gui/models/IInput.h"

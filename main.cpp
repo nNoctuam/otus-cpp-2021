@@ -1,25 +1,13 @@
-#include "include/app.h"
-#include "include/controller.h"
-#include "include/core/document.h"
-#include "include/core/graphics.h"
 #include "include/core/gui.h"
-#include "include/service/service.h"
+#include "include/gui/containers/Menu.h"
+#include "include/gui/containers/Form.h"
+#include "include/gui/containers/Dialog.h"
+#include "include/gui/inputs/TextInput.h"
+#include "include/gui/inputs/Button.h"
+#include "include/gui/inputs/ColorPicker.h"
 #include <memory>
 
-void buildMenu(Application& app) {
-  auto menu = std::make_shared<Menu>();
-
-  std::shared_ptr<MenuEntry> saveMenuEntry = std::make_shared<SaveMenuEntry>(app);
-  menu->AddEntry(saveMenuEntry);
-
-  app.AddElement(menu);
-}
-
 int main(int, char **) {
-  auto canvas = new Canvas();
-  auto document = new Document(*canvas);
-  auto app = new Application(*document);
-  buildMenu(*app);
 
   return 0;
 }
