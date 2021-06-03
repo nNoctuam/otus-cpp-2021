@@ -1,12 +1,12 @@
 #pragma once
 #include "../Observer.h"
 
-namespace core {
 namespace gui {
+namespace core {
 
-class IGUIElement : Observable {
+class IGUIElement : ::core::Observable {
   virtual ~IGUIElement();
 };
 
-} // namespace gui
 } // namespace core
+} // namespace gui

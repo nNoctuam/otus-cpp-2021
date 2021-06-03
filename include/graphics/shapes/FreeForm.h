@@ -3,7 +3,7 @@
 
 namespace graphics {
 
-class FreeForm : public core::graphics::IColoredShape {
+class FreeForm : public core::IColoredShape {
 public:
   void Render() override;
 };

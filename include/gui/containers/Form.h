@@ -3,6 +3,6 @@
 
 namespace gui {
 
-class Form : core::gui::IContainer {};
+class Form : core::IContainer {};
 
 } // namespace gui

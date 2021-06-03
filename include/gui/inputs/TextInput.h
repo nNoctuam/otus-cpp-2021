@@ -3,7 +3,7 @@
 
 namespace gui {
 
-class TextInput : public core::gui::IInput<std::string> {
+class TextInput : public core::IInput<std::string> {
 public:
   ~TextInput();
 

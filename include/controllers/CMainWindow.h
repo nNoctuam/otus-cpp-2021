@@ -5,13 +5,13 @@
 
 namespace gui {
 
-class CMainWindow : public core::gui::IController {
+class CMainWindow : public core::IController {
 public:
   void Run() override {}
 
 private:
   std::shared_ptr<CMainMenu> _mainMenuController;
-  std::shared_ptr<core::Document> _document;
+  std::shared_ptr<::core::Document> _document;
 };
 
 }

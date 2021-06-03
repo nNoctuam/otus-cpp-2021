@@ -6,12 +6,12 @@
 
 namespace gui {
 
-class MenuEntry : public core::gui::IGUIElement, public core::gui::IClickable {
+class MenuEntry : public core::IGUIElement, public core::IClickable {
 public:
   std::string title;
   ~MenuEntry() override;
 };
 
-class Menu : core::gui::IContainer {};
+class Menu : core::IContainer {};
 
 } // namespace gui

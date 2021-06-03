@@ -3,6 +3,6 @@
 
 namespace gui {
 
-class MainWindow : core::gui::IContainer {};
+class MainWindow : core::IContainer {};
 
 } // namespace gui

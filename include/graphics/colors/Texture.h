@@ -3,7 +3,7 @@
 
 namespace graphics {
 
-class TextureColor : public core::graphics::IColor {
+class TextureColor : public core::IColor {
 public:
   void ApplyToShape() override;
 };

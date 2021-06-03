@@ -6,7 +6,7 @@ namespace core {
 class Document {
 public:
 private:
-  std::vector<std::shared_ptr<graphics::IShape>> _shapes;
+  std::vector<std::shared_ptr<graphics::core::IShape>> _shapes;
   std::shared_ptr<Canvas> _canvas;
 };
 

@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class DialogView : public core::gui::IView {
+class DialogView : public core::IView {
 public:
   DialogView(const std::weak_ptr<Dialog> &model) : _model(model) {}
   void Render() override;

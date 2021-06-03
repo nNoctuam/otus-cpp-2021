@@ -3,7 +3,7 @@
 
 namespace graphics {
 
-class Line : public core::graphics::IColoredShape {
+class Line : public core::IColoredShape {
 public:
   void Render() override;
 };

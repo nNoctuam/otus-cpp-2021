@@ -4,7 +4,7 @@
 
 namespace gui {
 
-class CMainMenu : public core::gui::IController {
+class CMainMenu : public core::IController {
 public:
   void Run() override {}
 

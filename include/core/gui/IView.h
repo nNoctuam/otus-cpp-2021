@@ -3,14 +3,14 @@
 #include "../Observer.h"
 #include "IGUIElement.h"
 
-namespace core {
 namespace gui {
+namespace core {
 
-class IView : public Observer {
+class IView : public ::core::Observer {
 public:
   virtual void Render();
   void HandleObservableUpdate() { Render(); }
 };
 
-} // namespace gui
 } // namespace core
+} // namespace gui

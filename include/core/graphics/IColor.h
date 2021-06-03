@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../Canvas.h"
-namespace core {
 namespace graphics {
+namespace core {
 
 class IColor {
 public:
@@ -12,5 +12,5 @@ private:
   std::weak_ptr<IShape> _shape;
 };
 
-} // namespace graphics
 } // namespace core
+} // namespace graphics

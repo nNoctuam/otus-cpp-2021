@@ -3,7 +3,7 @@
 
 namespace graphics {
 
-class SolidColor : public core::graphics::IColor {
+class SolidColor : public core::IColor {
 public:
   void ApplyToShape() override;
 };

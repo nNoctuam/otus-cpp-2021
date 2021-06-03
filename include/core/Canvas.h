@@ -3,7 +3,7 @@
 
 namespace core {
 
-class Canvas : gui::IGUIElement {
+class Canvas : gui::core::IGUIElement {
 public:
   void DrawLine();
   void DrawCurve();

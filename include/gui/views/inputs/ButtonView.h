@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class ButtonView : public core::gui::IView {
+class ButtonView : public core::IView {
 public:
   ButtonView(const std::weak_ptr<Button> &model) : _model(model) {}
   void Render() override;

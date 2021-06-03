@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class FormView : public core::gui::IView {
+class FormView : public core::IView {
 public:
   FormView(const std::weak_ptr<Form> &model) : _model(model) {}
   void Render() override;

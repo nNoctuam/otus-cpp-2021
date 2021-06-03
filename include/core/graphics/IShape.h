@@ -1,16 +1,16 @@
 #pragma once
 
 #include "../Canvas.h"
-namespace core {
 namespace graphics {
+namespace core {
 
 class IShape {
 public:
   virtual void Render();
 
 private:
-  std::weak_ptr<Canvas> _canvas;
+  std::weak_ptr<::core::Canvas> _canvas;
 };
 
-} // namespace graphics
 } // namespace core
+} // namespace graphics

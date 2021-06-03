@@ -3,7 +3,7 @@
 
 namespace gui {
 
-class ColorPicker : public core::gui::IInput<std::string> {
+class ColorPicker : public core::IInput<std::string> {
 public:
   ~ColorPicker();
 

@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class ColorPickerView : public core::gui::IView {
+class ColorPickerView : public core::IView {
 public:
   ColorPickerView(const std::weak_ptr<ColorPicker> &model) : _model(model) {}
   void Render() override;

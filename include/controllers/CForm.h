@@ -4,7 +4,7 @@
 
 namespace gui {
 
-class CForm : public core::gui::IController {
+class CForm : public core::IController {
 public:
   void Run() override {}
 

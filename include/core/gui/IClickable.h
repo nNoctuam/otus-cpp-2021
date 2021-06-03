@@ -1,8 +1,8 @@
 #pragma once
 
 #include <functional>
-namespace core {
 namespace gui {
+namespace core {
 
 class IClickable {
 public:
@@ -13,5 +13,5 @@ private:
   std::function<void()> _clickHandler;
 };
 
-} // namespace gui
 } // namespace core
+} // namespace gui

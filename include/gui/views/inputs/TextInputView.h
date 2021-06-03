@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class TextInputView : public core::gui::IView {
+class TextInputView : public core::IView {
 public:
   TextInputView(const std::weak_ptr<TextInput> &model) : _model(model) {}
   void Render() override;

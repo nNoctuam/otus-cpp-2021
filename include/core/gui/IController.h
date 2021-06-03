@@ -2,10 +2,10 @@
 
 #include "memory"
 
-namespace core {
 namespace gui {
+namespace core {
 
-class IController{
+class IController {
 
   // use chain of responsibility to iterate views/subcontrollers recursively
   // to find one by coordinates with clickable model
@@ -15,5 +15,5 @@ class IController{
   virtual void Run();
 };
 
-} // namespace gui
 } // namespace core
+} // namespace gui

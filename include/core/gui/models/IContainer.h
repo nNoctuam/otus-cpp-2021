@@ -2,8 +2,8 @@
 #include "../IGUIElement.h"
 #include <vector>
 
-namespace core {
 namespace gui {
+namespace core {
 
 class IContainer : public IGUIElement {
 public:
@@ -15,5 +15,5 @@ private:
   std::vector<std::shared_ptr<IGUIElement>> _elements;
 };
 
-} // namespace gui
 } // namespace core
+} // namespace gui

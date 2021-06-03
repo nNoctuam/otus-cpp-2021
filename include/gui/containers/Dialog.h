@@ -3,6 +3,6 @@
 
 namespace gui {
 
-class Dialog : core::gui::IContainer {};
+class Dialog : core::IContainer {};
 
 } // namespace gui

@@ -3,7 +3,7 @@
 
 namespace graphics {
 
-class GradientColor : public core::graphics::IColor {
+class GradientColor : public core::IColor {
 public:
   void ApplyToShape() override;
 };

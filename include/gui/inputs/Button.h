@@ -3,7 +3,7 @@
 
 namespace gui {
 
-class Button : public core::gui::IInput<std::string> {
+class Button : public core::IInput<std::string> {
 public:
   ~Button();
 

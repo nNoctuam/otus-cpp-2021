@@ -5,7 +5,7 @@
 
 namespace gui {
 
-class MenuView : public core::gui::IView {
+class MenuView : public core::IView {
 public:
   MenuView(const std::weak_ptr<Menu> &model) : _model(model) {}
   void Render() override;
