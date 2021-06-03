@@ -7,11 +7,11 @@
 #include <tuple>
 #include <vector>
 
-#include "../src/print_ip/_helpers.tpp"
+#include "print_ip/_helpers.h"
 
-#include "../src/print_ip/bytes.tpp"
-#include "../src/print_ip/container.tpp"
-#include "../src/print_ip/string.tpp"
-#include "../src/print_ip/tuple.tpp"
+#include "print_ip/bytes.h"
+#include "print_ip/container.h"
+#include "print_ip/string.h"
+#include "print_ip/tuple.h"
 
 #endif // HELLOWORLD_PRINT_IP_H
