@@ -1,10 +1,9 @@
 #pragma once
 
-#include "../Data.h"
-#include "../Document.h"
+#include "../core/Data.h"
+#include "../core/Document.h"
 #include "memory"
 
-namespace core {
 namespace services {
 
 template <typename T>
@@ -14,4 +13,3 @@ class IDocumentSerializer {
 };
 
 } // namespace services
-} // namespace core

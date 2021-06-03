@@ -2,8 +2,9 @@
 #include "include/core/Document.h"
 #include "include/core/graphics.h"
 #include "include/core/gui.h"
-#include "include/core/services/IDataSaver.h"
-#include "include/core/services/IDocumentSerializer.h"
+
+#include "include/services/IDataSaver.h"
+#include "include/services/IDocumentSerializer.h"
 
 #include "include/graphics/colors/Gradient.h"
 #include "include/graphics/colors/Solid.h"
@@ -28,8 +29,13 @@
 #include "include/gui/views/inputs/ColorPickerView.h"
 #include "include/gui/views/inputs/TextInputView.h"
 
-#include "include/services/JSONDocumentSerializer.h"
-#include "include/services/JSONFileSaver.h"
+#include "include/adapters/JSONDocumentSerializer.h"
+#include "include/adapters/JSONFileSaver.h"
+
+#include "include/controllers/CForm.h"
+#include "include/controllers/CMainMenu.h"
+#include "include/controllers/CMainWindow.h"
+
 #include <memory>
 
 int main(int, char **) { return 0; }

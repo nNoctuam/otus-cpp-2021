@@ -3,7 +3,6 @@
 #include "memory"
 #include "vector"
 
-namespace core {
 namespace services {
 
 template <typename T> class IDataSaver {
@@ -12,4 +11,3 @@ template <typename T> class IDataSaver {
 };
 
 } // namespace services
-} // namespace core
