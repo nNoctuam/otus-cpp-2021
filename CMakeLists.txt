@@ -88,3 +88,18 @@ project(1931_great_team)
 set(CMAKE_CXX_STANDARD 14)
 add_executable(1931_great_team 1931_great_team/main.cpp)
 
+
+project(1885_passengers_comfort)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1885_passengers_comfort 1885_passengers_comfort/main.cpp)
+
+
+project(1789_in_search_of_dodecahedron)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1789_in_search_of_dodecahedron 1789_in_search_of_dodecahedron/main.cpp)
+
+
+project(1656_army)
+set(CMAKE_CXX_STANDARD 14)
+add_executable(1656_army 1656_army/main.cpp)
+
