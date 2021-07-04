@@ -3,11 +3,19 @@
 #include "Container.h"
 #include "Logger.h"
 
-class Controller : public Container {
+class Controller : public Container,
+                   public std::enable_shared_from_this<Controller> {
 public:
-  explicit Controller(size_t maxBulkLength, std::shared_ptr<Logger> logger)
-      : Container(std::move(logger)), _max_bulk_size(maxBulkLength) {
-    _call_stack.push_back(this);
+
+  // todo this should not be called directly to make shared_from_this work.
+  //      find a way to hide it - cannot just use default constructor
+  //      because of inheritance.
+  explicit Controller(size_t max_bulk_size, std::shared_ptr<Logger> logger)
+      : Container(std::move(logger)), _max_bulk_size(max_bulk_size) {
+  }
+
+  static std::shared_ptr<Controller> create(size_t max_bulk_size, std::shared_ptr<Logger> logger) {
+    return std::make_shared<Controller>(max_bulk_size, std::move(logger));
   }
 
   void handleInput(std::string &cmd);
@@ -21,8 +29,10 @@ private:
 
   void reroute_logger();
 
-  bool at_root() const { return _call_stack.size() == 1; }
+  bool at_root() const { return _call_stack.empty(); }
+
+  std::shared_ptr<Container> current_controller();
 
   size_t _max_bulk_size;
-  std::vector<Container *> _call_stack;
+  std::vector<std::shared_ptr<Container>> _call_stack;
 };

@@ -16,16 +16,13 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  size_t max_bulk_length = atoi(argv[1]);
-  Controller root(max_bulk_length, std::make_shared<Logger>());
+  size_t max_bulk_size = atoi(argv[1]);
+  std::shared_ptr<Controller> root = Controller::create(max_bulk_size, std::make_shared<Logger>());
 
   std::string cmd;
-  std::cin >> cmd;
-
-  while (!cmd.empty()) {
-    root.handleInput(cmd);
-    std::cin >> cmd;
+  while (std::cin >> cmd) {
+    root->handleInput(cmd);
   }
-  root.run();
+  root->run();
   return 0;
 }
