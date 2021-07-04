@@ -39,13 +39,11 @@ public:
 
 class Controller : public Container {
 public:
-  explicit Controller(size_t maxBulkLength)
-      : _max_bulk_length(maxBulkLength) {
+  explicit Controller(size_t maxBulkLength) : _max_bulk_length(maxBulkLength) {
     _call_stack.push_back(this);
   }
 
   void handleInput(std::string &cmd) {
-    //    std::cout << "handle input: " << cmd << std::endl;
     if (cmd == "{") {
       go_deeper();
     } else if (cmd == "}") {
@@ -53,9 +51,8 @@ public:
     } else if ((cmd.empty() || cmd == "EOF") && at_root()) {
       run();
     } else {
-      push(new Command(cmd));
-      if (_call_stack.at(_call_stack.size() - 1) == this &&
-          _commands.size() >= _max_bulk_length) {
+      _call_stack.at(_call_stack.size() - 1)->push(new Command(cmd));
+      if (at_root() && _commands.size() >= _max_bulk_length) {
         run();
       }
     }
@@ -90,13 +87,14 @@ private:
     }
   }
 
-  bool at_root() const {
-    return _call_stack.size() == 1;
-  }
+  bool at_root() const { return _call_stack.size() == 1; }
 
   size_t _max_bulk_length;
   std::vector<Container *> _call_stack;
 };
+
+// todo read length as argument
+// todo logger
 
 int main(int, char **) {
   std::string cmd;
