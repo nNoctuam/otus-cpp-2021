@@ -10,7 +10,7 @@ public:
   explicit Container(std::shared_ptr<Logger> logger)
       : _logger(std::move(logger)) {}
 
-  void push(std::shared_ptr<IRunnable> command) { _commands.push_back(command); }
+  void push(std::shared_ptr<IRunnable> command);
 
   void run() override;
 

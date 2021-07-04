@@ -17,7 +17,8 @@ int main(int argc, char *argv[]) {
   }
 
   size_t max_bulk_size = atoi(argv[1]);
-  std::shared_ptr<Controller> controller = Controller::create(max_bulk_size, std::make_shared<Logger>());
+  auto logger = std::make_shared<Logger>();
+  auto controller = Controller::create(max_bulk_size, logger);
 
   std::string cmd;
   while (std::cin >> cmd) {

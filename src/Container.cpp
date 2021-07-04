@@ -10,3 +10,7 @@ void Container::run() {
   }
   _commands.clear();
 }
+
+void Container::push(std::shared_ptr<IRunnable> command) {
+  _commands.push_back(command);
+}

@@ -60,3 +60,8 @@ std::shared_ptr<Container> Controller::current_controller() {
   }
   return _call_stack.at(_call_stack.size() - 1);
 }
+
+std::shared_ptr<Controller> Controller::create(size_t max_bulk_size,
+                                               std::shared_ptr<Logger> logger) {
+  return std::make_shared<Controller>(max_bulk_size, std::move(logger));
+}
