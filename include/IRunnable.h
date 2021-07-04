@@ -1,7 +1,7 @@
 #pragma once
 
-class ICommand {
+class IRunnable {
 public:
   virtual void run(){};
-  virtual ~ICommand(){};
+  virtual ~IRunnable(){};
 };

@@ -2,19 +2,19 @@
 
 #include "vector"
 
-#include "ICommand.h"
+#include "IRunnable.h"
 #include "Logger.h"
 
-class Container : public ICommand {
+class Container : public IRunnable {
 public:
   explicit Container(std::shared_ptr<Logger> logger)
       : _logger(std::move(logger)) {}
 
-  void push(std::shared_ptr<ICommand> command) { _commands.push_back(command); }
+  void push(std::shared_ptr<IRunnable> command) { _commands.push_back(command); }
 
   void run() override;
 
 protected:
-  std::vector<std::shared_ptr<ICommand>> _commands;
+  std::vector<std::shared_ptr<IRunnable>> _commands;
   std::shared_ptr<Logger> _logger;
 };

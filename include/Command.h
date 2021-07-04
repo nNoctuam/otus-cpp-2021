@@ -1,8 +1,8 @@
 #pragma once
-#include "ICommand.h"
+#include "IRunnable.h"
 #include "Logger.h"
 
-class Command : public ICommand {
+class Command : public IRunnable {
 public:
   explicit Command(std::string name, std::shared_ptr<Logger> logger)
       : _name(std::move(name)), _logger(std::move(logger)) {}

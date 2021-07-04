@@ -22,14 +22,14 @@ public:
 
   void run() override;
 
+  bool at_root() const { return _call_stack.empty(); }
+
 private:
   void go_deeper();
 
   void go_upper();
 
   void reroute_logger();
-
-  bool at_root() const { return _call_stack.empty(); }
 
   std::shared_ptr<Container> current_controller();
 

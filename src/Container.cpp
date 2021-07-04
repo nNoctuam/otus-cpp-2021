@@ -3,7 +3,7 @@
 void Container::run() {
   for (size_t i = 0; i < _commands.size(); i++) {
     _commands[i]->run();
-    _commands[i]->~ICommand();
+    _commands[i]->~IRunnable();
     if (i < _commands.size() - 1) {
       (*_logger) << ", ";
     }
